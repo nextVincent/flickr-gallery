@@ -1,0 +1,26 @@
+/* mixin */
+@mixin columnCal($w) {
+	width: percentage($w/12);
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@mixin column {
+    @for $i from 1 through 12 {
+        div.col-#{$i} { @include columnCal($i); }
+    }
+}
+
+@mixin crossBrowser($property, $val){
+    -webkit-#{$property}: $val;
+    -moz-#{$property}: $val;
+    -ms-#{$property}: $val;
+    #{$property}: $val;
+}
+
+@mixin box-shadow($property...) {
+    box-shadow: $property;
+    -webkit-box-shadow: $property;
+    -moz-box-shadow: $property;
+}
