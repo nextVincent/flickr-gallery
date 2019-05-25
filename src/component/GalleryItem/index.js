@@ -58,14 +58,16 @@ export default class GalleryItem extends PureComponent {
 
 
     render() {
-        const {title, media, publish, author, authorId, link, tags} = this.props;
+        const {title, media, publish, author, link, tags} = this.props;
         const { shownTags } = this.state;
         const authorName = this.getAuthName(author);
         const date = this.getDate(publish);
         const aTags = this.getTagsArray(tags);
+        const coverImg = media.m ? media.m  : 'http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png';
+        const fullImage = media.m ? this.fullsizeImage(media.m) : 'http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png';
         return (
             <div className="gallery-item ">
-                <ProgressImage cover={media.m} source={this.fullsizeImage(media.m)}>
+                <ProgressImage cover={coverImg} source={fullImage}>
                     <div className="overlay-icon">
                     {link &&  <a className="centerized" href={link} alt="title" rel="noopener noreferrer" target="_blank"> <i className="fa fa-eye" aria-hidden="true"></i> </a>}
                     {publish && <p className="published-date centerized"><i className="fa fa-calendar-alt" aria-hidden="true"></i>{date}</p>}
