@@ -15,7 +15,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        
         fetch("/services/feeds/photos_public.gne?format=json&nojsoncallback=1")
         .then(response => response.json())
         .then(data => {
@@ -38,7 +37,7 @@ export default class Home extends Component {
         });
     }
 
-    onSearch = (key) => {
+    onSearch = (key, callback) => {
         let newItems = [];
         if (key && key !== "") {
             newItems = this.state.sourceItem.filter( el => el.title.includes(key) || el.tags.includes(key) || el.author.includes(key));
@@ -49,7 +48,7 @@ export default class Home extends Component {
             items: newItems,
             pages: 1,
             loading: false
-        });
+        }, callback);
     }
 
     render() {

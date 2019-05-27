@@ -119,6 +119,18 @@ header {
 
             label {
                 position: absolute;
+                height: 100%;
+                
+                button {
+                    height: 100%;
+                    border: none;
+                    background: transparent;
+                    font-size: 15px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    cursor: pointer;
+                    color: rgba(0,0,0,.8);
+                }
 
                 img {
                     height: 28px;
